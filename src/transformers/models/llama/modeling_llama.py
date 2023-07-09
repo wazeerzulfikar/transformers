@@ -596,7 +596,7 @@ class LlamaModel(LlamaPreTrainedModel):
 
             # TODO: Knockout neurons
             if knockout_neurons:
-                print("Knocking out neurons2", knockout_neurons)
+                print("Knocking out neurons4", knockout_neurons)
                 for layer_id, emb_id in knockout_neurons:
                     if layer_id == idx:
                         print("Hidden States Tensor:", hidden_states.size())
@@ -610,7 +610,7 @@ class LlamaModel(LlamaPreTrainedModel):
 
         # TODO: Knockout neurons in last layer
         if knockout_neurons:
-                print("Knocking out neurons3", knockout_neurons)
+                print("Knocking out neurons5", knockout_neurons)
                 for layer_id, emb_id in knockout_neurons:
                     if layer_id == self.layers-1:
                         hidden_states[2] = 0.0
