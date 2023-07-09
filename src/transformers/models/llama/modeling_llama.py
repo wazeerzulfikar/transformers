@@ -598,8 +598,8 @@ class LlamaModel(LlamaPreTrainedModel):
             if knockout_neurons:
                 print("Knocking out neurons at layer index: ", idx)
                 print("Hidden States Tensor:", hidden_states.size())
-                for layer_id, emb_id in knockout_neurons:
-                    hidden_states[0][layer_id][emb_id] = 0.0
+                # for layer_id, emb_id in knockout_neurons:
+                #     hidden_states[0][layer_id][emb_id] = 0.0
 
             if use_cache:
                 next_decoder_cache += (layer_outputs[2 if output_attentions else 1],)
