@@ -596,10 +596,9 @@ class LlamaModel(LlamaPreTrainedModel):
 
             # TODO: Knockout neurons
             if knockout_neurons:
-                print("Knocking out neurons8", knockout_neurons)
+                print("Knocking out neurons at layer index: ", idx)
+                print("Hidden States Tensor:", hidden_states.size())
                 for layer_id, emb_id in knockout_neurons:
-                    print("layer index: ", idx)
-                    print("Hidden States Tensor:", hidden_states.size())
                     hidden_states[0][layer_id][emb_id] = 0.0
 
             if use_cache:
@@ -609,11 +608,11 @@ class LlamaModel(LlamaPreTrainedModel):
                 all_self_attns += (layer_outputs[1],)
 
         # TODO: Knockout neurons in last layer
-        if knockout_neurons:
-                print("Knocking out neurons in final layer", knockout_neurons)
-                for layer_id, emb_id in knockout_neurons:
-                    print("Hidden States Tensor:", hidden_states.size())
-                    hidden_states[0][layer_id][emb_id] = 0.0
+        # if knockout_neurons:
+        #         print("Knocking out neurons in final layer", knockout_neurons)
+        #         for layer_id, emb_id in knockout_neurons:
+        #             print("Hidden States Tensor:", hidden_states.size())
+        #             hidden_states[0][layer_id][emb_id] = 0.0
                         
         hidden_states = self.norm(hidden_states)
 
