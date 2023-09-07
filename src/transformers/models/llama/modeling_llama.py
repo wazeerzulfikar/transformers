@@ -667,7 +667,8 @@ class LlamaForCausalLM(LlamaPreTrainedModel):
         output_hidden_states: Optional[bool] = None,
         return_dict: Optional[bool] = None,
         save_path: Optional[str] = None,
-        knockout_neurons: Optional[List[Tuple[int, int]]] = None
+        knockout_neurons: Optional[List[Tuple[int, int]]] = None,
+        ns_value = None
     ) -> Union[Tuple, CausalLMOutputWithPast]:
         r"""
         Args:
@@ -694,7 +695,6 @@ class LlamaForCausalLM(LlamaPreTrainedModel):
         >>> tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
         "Hey, are you conscious? Can you talk to me?\nI'm not conscious, but I can talk to you."
         ```"""
-
         output_attentions = output_attentions if output_attentions is not None else self.config.output_attentions
         output_hidden_states = (
             output_hidden_states if output_hidden_states is not None else self.config.output_hidden_states
