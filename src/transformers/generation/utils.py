@@ -2353,7 +2353,7 @@ class GenerationMixin:
                 # knockout_neurons_matrix[layer_id, emb_id] = 0.0
                 knockout_neurons_matrix[layer_id, emb_id] = float(model_kwargs['ns_value'])
         else:
-            knockout_neurons_matrix = None
+            knockout_neurons_matrix = model_kwargs['knockout_neurons']
 
         while True:
             if synced_gpus:
